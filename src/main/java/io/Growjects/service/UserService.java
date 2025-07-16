@@ -29,26 +29,26 @@ public class UserService {
 
         userRepository.save(user);
 
-        UserResponse res = new UserResponse();
-        res.setEmail(user.getEmail());
-        res.setName(user.getName());
-        res.setId(user.getId());
-        return res;
+        return toUserResponse(user);
     }
 
     public UserResponse getUserById(UUID id){
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Entity not found"));
-
+        User user = getUserEntityById(id);
         return toUserResponse(user);
     }
 
     public List<UserResponse> getAllUsers(){
         List<User> users = userRepository.findAll();
 
-        return users.stream().map(user ->{
-            return toUserResponse(user);
-        }).collect(Collectors.toList());
+        return users.stream()
+                .map(this::toUserResponse)
+                .collect(Collectors.toList());
+    }
+
+
+    public void deleteUser(UUID id){
+        User user = getUserEntityById(id);
+        userRepository.delete(user);
     }
 
     public UserResponse toUserResponse(User user){
@@ -59,4 +59,10 @@ public class UserService {
 
         return res;
     }
+
+    public User getUserEntityById(UUID id){
+        return userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Entity not found"));
+    }
+
 }

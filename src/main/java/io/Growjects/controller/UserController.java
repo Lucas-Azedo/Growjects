@@ -25,8 +25,6 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUserById(@RequestParam UUID id){
         UserResponse res = userService.getUserById(id);
-
-        
         return ResponseEntity.status(HttpStatus.FOUND).body(res);
     }
 
@@ -40,5 +38,10 @@ public class UserController {
         else {
             return ResponseEntity.status(HttpStatus.OK).body(res);
         }
+    }
+
+    @DeleteMapping ResponseEntity<Void> deleteUserById(@RequestParam UUID id){
+        userService.deleteUser(id);
+        return ResponseEntity.ok().build();
     }
 }
