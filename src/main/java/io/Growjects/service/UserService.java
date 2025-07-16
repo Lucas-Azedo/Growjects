@@ -45,6 +45,17 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public UserResponse updateUserById(UserSignRequest req, UUID id){
+        User user = getUserEntityById(id);
+
+        user.setName(req.getName());
+        user.setPassword(req.getPassword());
+        user.setEmail(req.getEmail());
+
+        userRepository.save(user);
+
+        return toUserResponse(user);
+    }
 
     public void deleteUser(UUID id){
         User user = getUserEntityById(id);

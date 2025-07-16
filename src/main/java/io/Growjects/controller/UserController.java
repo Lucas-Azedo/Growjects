@@ -40,8 +40,14 @@ public class UserController {
         }
     }
 
+    @PutMapping
+    public ResponseEntity<UserResponse> updateUserById(@RequestBody UserSignRequest req, @RequestParam UUID id){
+        UserResponse res = userService.updateUserById(req, id);
+        return ResponseEntity.status(HttpStatus.OK).body(res);
+    }
+
     @DeleteMapping ResponseEntity<Void> deleteUserById(@RequestParam UUID id){
         userService.deleteUser(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
