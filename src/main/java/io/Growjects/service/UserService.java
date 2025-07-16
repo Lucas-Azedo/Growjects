@@ -22,10 +22,7 @@ public class UserService {
 
     public UserResponse createUser(UserSignRequest req){
         User user = new User();
-
-        user.setEmail(req.getEmail());
-        user.setName(req.getName());
-        user.setPassword(req.getPassword());
+        user.applyFrom(req);
 
         userRepository.save(user);
 
@@ -47,10 +44,7 @@ public class UserService {
 
     public UserResponse updateUserById(UserSignRequest req, UUID id){
         User user = getUserEntityById(id);
-
-        user.setName(req.getName());
-        user.setPassword(req.getPassword());
-        user.setEmail(req.getEmail());
+        user.applyFrom(req);
 
         userRepository.save(user);
 
