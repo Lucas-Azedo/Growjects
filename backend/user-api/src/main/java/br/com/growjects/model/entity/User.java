@@ -1,6 +1,6 @@
-package io.Growjects.model.entity;
+package br.com.growjects.model.entity;
 
-import io.Growjects.model.dto.user.UserSignRequest;
+import br.com.growjects.model.dto.user.UserSignRequest;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

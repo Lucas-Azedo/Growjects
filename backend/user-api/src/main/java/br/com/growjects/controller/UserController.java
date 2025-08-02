@@ -1,8 +1,8 @@
-package io.Growjects.controller;
+package br.com.growjects.controller;
 
-import io.Growjects.model.dto.user.UserResponse;
-import io.Growjects.model.dto.user.UserSignRequest;
-import io.Growjects.service.UserService;
+import br.com.growjects.model.dto.user.UserResponse;
+import br.com.growjects.model.dto.user.UserSignRequest;
+import br.com.growjects.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

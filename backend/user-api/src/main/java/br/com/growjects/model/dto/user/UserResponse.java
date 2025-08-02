@@ -1,4 +1,4 @@
-package io.Growjects.model.dto.user;
+package br.com.growjects.model.dto.user;
 
 import lombok.Data;
 

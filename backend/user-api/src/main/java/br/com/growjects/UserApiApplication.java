@@ -1,13 +1,13 @@
-package io.Growjects;
+package br.com.growjects;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GrowjectsApplication {
+public class UserApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GrowjectsApplication.class, args);
+		SpringApplication.run(UserApiApplication.class, args);
 	}
 
 }

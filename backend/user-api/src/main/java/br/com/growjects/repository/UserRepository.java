@@ -1,6 +1,6 @@
-package io.Growjects.repository;
+package br.com.growjects.repository;
 
-import io.Growjects.model.entity.User;
+import br.com.growjects.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

@@ -1,14 +1,12 @@
-package io.Growjects.service;
+package br.com.growjects.service;
 
-import io.Growjects.model.dto.user.UserResponse;
-import io.Growjects.model.dto.user.UserSignRequest;
-import io.Growjects.model.entity.User;
-import io.Growjects.repository.UserRepository;
+import br.com.growjects.model.dto.user.UserResponse;
+import br.com.growjects.model.dto.user.UserSignRequest;
+import br.com.growjects.model.entity.User;
+import br.com.growjects.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 import java.util.UUID;
