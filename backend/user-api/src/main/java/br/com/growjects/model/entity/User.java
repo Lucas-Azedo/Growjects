@@ -1,6 +1,5 @@
 package br.com.growjects.model.entity;
 
-import br.com.growjects.model.dto.user.UserSignRequest;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,11 +18,4 @@ public class User {
     private String name;
     private String password;
     private String email;
-
-    public void applyFrom(UserSignRequest req){
-        User user = new User();
-        user.setEmail(req.getEmail());
-        user.setName(req.getName());
-        user.setPassword(req.getPassword());
-    }
 }
