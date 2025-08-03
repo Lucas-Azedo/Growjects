@@ -1,7 +1,7 @@
 package br.com.growjects.service;
 
 import br.com.growjects.model.dto.user.UserResponse;
-import br.com.growjects.model.dto.user.UserSignRequest;
+import br.com.growjects.model.dto.user.UserRequest;
 import br.com.growjects.model.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,11 +22,10 @@ public class UserMapper {
         return res;
     }
 
-    public User toUserEntity(UserSignRequest req){
+    public User toUserEntity(UserRequest req){
         User user = new User();
         user.setEmail(req.getEmail());
         user.setName(req.getName());
-        user.setPassword(passwordEncoder.encode(req.getPassword()));
         return user;
     }
 }

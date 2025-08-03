@@ -1,7 +1,7 @@
 package br.com.growjects.controller;
 
 import br.com.growjects.model.dto.user.UserResponse;
-import br.com.growjects.model.dto.user.UserSignRequest;
+import br.com.growjects.model.dto.user.UserRequest;
 import br.com.growjects.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserSignRequest req){
+    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest req){
         UserResponse res = userService.createUser(req);
         return ResponseEntity.status(HttpStatus.CREATED).body(res);
     }
@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PutMapping
-    public ResponseEntity<UserResponse> updateUserById(@RequestBody UserSignRequest req, @RequestParam UUID id){
+    public ResponseEntity<UserResponse> updateUserById(@RequestBody UserRequest req, @RequestParam UUID id){
         UserResponse res = userService.updateUserById(req, id);
         return ResponseEntity.status(HttpStatus.OK).body(res);
     }

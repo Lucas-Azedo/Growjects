@@ -1,7 +1,7 @@
 package br.com.growjects.service;
 
 import br.com.growjects.model.dto.user.UserResponse;
-import br.com.growjects.model.dto.user.UserSignRequest;
+import br.com.growjects.model.dto.user.UserRequest;
 import br.com.growjects.model.entity.User;
 import br.com.growjects.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,10 +18,9 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
 
-    public UserResponse createUser(UserSignRequest req){
+    public UserResponse createUser(UserRequest req){
         User user = userMapper.toUserEntity(req);
 
         userRepository.save(user);
@@ -44,12 +43,11 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserResponse updateUserById(UserSignRequest req, UUID id){
+    public UserResponse updateUserById(UserRequest req, UUID id){
         User user = getUserEntityById(id);
 
         user.setName(req.getName());
         user.setEmail(req.getEmail());
-        user.setPassword(passwordEncoder.encode(req.getPassword()));
 
         userRepository.save(user);
 
