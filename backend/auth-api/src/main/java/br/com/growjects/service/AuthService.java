@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ public class AuthService {
     TokenService tokenService;
     PasswordEncoder passwordEncoder;
 
-    public void signUp(SignUpRequest req){
+    public String signUp(SignUpRequest req){
         Optional<User> existingUser = userRepository.findByEmail(req.getEmail());
 
         if(existingUser.isPresent()){
@@ -39,9 +40,12 @@ public class AuthService {
 
         userRepository.save(newUser);
 
-        //Authenticate
+        //PEGAR ROLES DEVE FICAR AQUI
+        List<String> userRoles = null;
+
+        return tokenService.buildToken(newUser, userRoles);
     }
-    public void signIn(SignInRequest req){
+    public String signIn(SignInRequest req){
         Optional<User> existingUser = userRepository.findByEmail(req.getEmail());
 
         if(existingUser.isEmpty()){
@@ -54,6 +58,9 @@ public class AuthService {
             throw new InvalidCredentialException("Credentials are invalid");
         }
 
-        //Authenticate
+        //PEGAR ROLES DEVE FICAR AQUI
+        List<String> userRoles = null;
+
+        return tokenService.buildToken(user, userRoles);
     }
 }

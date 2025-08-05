@@ -16,12 +16,14 @@ public class AuthController {
 
     private final AuthService authService;
 
+    // Trocar resposta para OK + TOKEN
     @PostMapping("/signIn")
     public ResponseEntity<Void > signIn(@Valid @RequestBody SignInRequest req){
         authService.signIn(req);
         return ResponseEntity.noContent().build();
     }
-
+    
+    // Trocar resposta para OK + TOKEN
     @PostMapping("/signUp")
     public ResponseEntity<Void> signUp(@Valid @RequestBody SignUpRequest req){
         authService.signUp(req);
