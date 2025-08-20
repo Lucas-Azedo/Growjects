@@ -19,9 +19,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class AuthService {
 
-    UserRepository userRepository;
-    TokenService tokenService;
-    PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final TokenService tokenService;
+    private final PasswordEncoder passwordEncoder;
 
     public String signUp(SignUpRequest req){
         Optional<User> existingUser = userRepository.findByEmail(req.getEmail());
