@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package userapi;
+
+service UserService {
+  rpc GetUserRoles (UserIdRequest) returns (UserRolesResponse){
+  }
+}
+
+message UserIdRequest {
+  string id = 1;
+}
+
+message UserRolesResponse {
+  repeated string roles = 1;
+}

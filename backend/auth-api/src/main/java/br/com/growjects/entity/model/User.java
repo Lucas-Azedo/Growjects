@@ -1,13 +1,13 @@
 package br.com.growjects.entity.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
 import java.util.UUID;
 
-@Entity
+@RedisHash("users")
 @Getter
 @Setter
 public class User {
